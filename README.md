@@ -16,11 +16,11 @@ BiliBili 会员购抢票 CLI/TUI 工具。
 
 | 设备 | 架构 | 压缩包                                                                     |
 | --- | --- |-------------------------------------------------------------------------|
-| Windows | `amd64` / `x86_64` | `bili-ticket-go-0.1.1-beta.1+20260428.action-windows-amd64-dynamic.zip` |
-| macOS Intel | `amd64` / `x86_64` | `bili-ticket-go-0.1.1-beta.1+20260428.action-darwin-amd64-dynamic.zip`  |
-| macOS Apple Silicon | `arm64` | `bili-ticket-go-0.1.1-beta.1+20260428.action-darwin-arm64-dynamic.zip`  |
-| Linux x86_64 | `amd64` | `bili-ticket-go-0.1.1-beta.1+20260428.action-linux-amd64-static.zip`    |
-| Linux ARM64 | `arm64` | `bili-ticket-go-0.1.1-beta.1+20260428.action-linux-arm64-static.zip`    |
+| Windows | `amd64` / `x86_64` | `bili-ticket-go-v0.2.0-beta.2+20260613.action-windows-amd64-dynamic.zip` |
+| macOS Intel | `amd64` / `x86_64` | `bili-ticket-v0.2.0-beta.2+20260613.action-darwin-amd64-dynamic.zip`  |
+| macOS Apple Silicon | `arm64` | `bili-ticket-go-v0.2.0-beta.2+20260613.action-darwin-arm64-dynamic.zip`  |
+| Linux x86_64 | `amd64` | `bili-ticket-go-v0.2.0-beta.2+20260613.action-linux-amd64-static.zip`    |
+| Linux ARM64 | `arm64` | `bili-ticket-go-v0.2.0-beta.2+20260613.action-linux-arm64-static.zip`    |
 
 ## 战果
 

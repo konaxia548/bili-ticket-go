@@ -5,7 +5,8 @@
 BiliBili 会员购抢票 CLI/TUI 工具。
 
 交流群链接：aHR0cHM6Ly81NDg3MTY4MTAueHl6Lw==
-入群问题前半段：`YnRs` 请与后半段拼接后解密加入群聊
+
+入群问题前半段：`YnRs` , 请与后半段拼接后解密加入群聊
 
 </div>
 
@@ -15,15 +16,12 @@ BiliBili 会员购抢票 CLI/TUI 工具。
 
 ## Release
 
-| 设备 | 架构 | 压缩包                                                                     |
-| --- | --- |-------------------------------------------------------------------------|
-| Windows | `amd64` / `x86_64` | `bili-ticket-go-v0.2.0-beta.2+20260613.action-windows-amd64-dynamic.zip` |
-| macOS Intel | `amd64` / `x86_64` | `bili-ticket-v0.2.0-beta.2+20260613.action-darwin-amd64-dynamic.zip`  |
-| macOS Apple Silicon | `arm64` | `bili-ticket-go-v0.2.0-beta.2+20260613.action-darwin-arm64-dynamic.zip`  |
-| Linux x86_64 | `amd64` | `bili-ticket-go-v0.2.0-beta.2+20260613.action-linux-amd64-static.zip`    |
-| Linux ARM64 | `arm64` | `bili-ticket-go-v0.2.0-beta.2+20260613.action-linux-arm64-static.zip`    |
+支持 `Windows` / `Macos` / `Linux`，请自行前往[Release](https://github.com/konaxia548/bili-ticket-go/releases/latest)下载
 
 ## 战果
+
+BW 2026 联票与一开实测可用
+![](./docs/pics/bw2026.png)
 
 作者成功在星铁land 二开（hot project，需要ctoken/ptoken）2秒抢到票。
 ![](./docs/pics/0425-land.png)
@@ -47,6 +45,8 @@ macOS / Linux:
 chmod +x ./btg-darwin-arm64-dynamic
 ./btg-darwin-arm64-dynamic
 ```
+
+请前往[配置文档](./config.md)自行学习进阶配置方式。
 
 ## 功能说明
 

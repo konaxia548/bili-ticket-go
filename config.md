@@ -93,3 +93,76 @@ web:
 
 - `web.listen_port`: 范围为 1..65535。
 - 当 `web.listen_host` 不是 loopback 地址时，`web.auth_token` 必填。
+
+## 错误码处理和延迟
+
+`error_policy` 控制抢票循环的请求节奏、单次模式重试、HTTP 状态码退避、业务错误码退避和业务错误码分类。所有时间字段单位都是毫秒。
+
+```yaml
+error_policy:
+  loop:
+    rush_interval_ms: 300
+    max_create_attempts: 20
+    max_rounds: 0
+
+  http:
+    default_backoff_ms: 300
+    status_backoff_ms:
+      "429": 1200
+
+  code_backoff_ms:
+    "100009": 1500
+
+  code_class_override:
+    "101006": reprepare
+```
+
+### loop 节奏
+
+- `rush_interval_ms`: rush/waiting 下单轮次之间的等待时间。每轮失败且允许进入下一轮时使用。
+- `max_create_attempts`: 每轮最多执行多少次下单接口。
+- `max_rounds`: 最大轮数；`0` 表示不限轮数，直到成功、失败、取消或上下文结束。
+
+### HTTP 状态码延迟
+
+- `http.default_backoff_ms`: 可重试 HTTP 错误的默认退避。网络瞬时错误也使用这个值。
+- `http.status_backoff_ms`: 覆盖指定 HTTP 状态码的退避时间。key 必须加引号，状态码范围为 100..599。
+- HTTP 412 默认最小退避是 10 秒；如果在 `status_backoff_ms` 中显式配置 `"412"`，则使用配置值。
+- 如果响应头里有 `Retry-After` 或 `X-Bili-Retry-After`，程序会取它和配置退避中的较大值。
+
+示例：让 429 慢一点，412 保持更保守：
+
+```yaml
+error_policy:
+  http:
+    default_backoff_ms: 300
+    status_backoff_ms:
+      "429": 1200
+      "412": 10000
+```
+
+### 业务错误码延迟
+
+`code_backoff_ms` 用于指定业务错误码的退避时间。key 必须加引号，值不能为负数。
+
+```yaml
+error_policy:
+  code_backoff_ms:
+    "100009": 1500
+    "211": 1200
+    "3": 5000
+```
+
+对普通可重试业务码，显式 `code_backoff_ms` 会覆盖接口返回的 retry-after。对库存退避类错误码，未显式配置时会取接口 retry-after 和默认库存退避中的较大值。
+
+### 业务错误码分类
+
+`code_class_override` 用于改变业务错误码的处理方式。支持的分类：
+
+- `limit`: 限流或临时限制，按可重试错误处理。
+- `reprepare`: 当前 prepare token 或订单上下文不可继续，结束本轮并重新 prepare。
+- `fatal`: 直接视为致命错误。配置为 `fatal` 的错误码不能同时配置 `code_backoff_ms`。
+- `stock_backoff`: 库存瞬时不足。waiting 模式会返回监控；rush 模式会按退避继续后续尝试/轮次。
+- `buyer_error`: 购票人、实名、地址等用户侧错误，直接失败并提示。
+- `confirm_rescue`: createV2/confirm/status 阶段需要一次 confirmInfo 补救。
+

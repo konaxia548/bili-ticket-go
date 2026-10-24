@@ -4,7 +4,7 @@
 
 BiliBili 会员购抢票 CLI/TUI 工具。
 
-交流群链接：aHR0cHM6Ly81NDg3MTY4MTAueHl6Lw==
+交流群链接 及 下载导航链接：[点击直达](https://548716810.xyz/)
 
 入群问题前半段：`YnRs` , 请与后半段拼接后解密加入群聊
 

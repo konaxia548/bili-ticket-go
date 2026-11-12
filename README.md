@@ -14,17 +14,6 @@ BiliBili 会员购抢票 CLI/TUI 工具。
 
 ![](./docs/pics/webui-cp32.png)
 
-## Release
-
-支持 `Windows` / `Macos` / `Linux`，请自行前往[Release](https://github.com/konaxia548/bili-ticket-go/releases/latest)下载
-
-## 战果
-
-BW 2026 联票与一开实测可用
-![](./docs/pics/bw2026.png)
-
-作者成功在星铁land 二开（hot project，需要ctoken/ptoken）2秒抢到票。
-![](./docs/pics/0425-land.png)
 
 ## 使用方式
 

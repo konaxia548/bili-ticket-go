@@ -4,7 +4,7 @@
 
 BiliBili 会员购抢票 CLI/TUI 工具。
 
-交流群链接 及 下载导航 链接：[点击直达](https://548716810.xyz/)
+交流群链接 及 下载导航 链接：[点击直达](https://biliticketgo.com/)
 
 </div>
 
